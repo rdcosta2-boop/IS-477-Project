@@ -19,12 +19,16 @@
 
 <ul>
   <li> Dataset 1: Enrollments and IUs by Course, Subject, and Offering Department 2025-26 (LAS, Gies College of Business)
+
 Source:
+
 https://secure.dmi.illinois.edu/course/crsCTLR.asp (LAS)
 https://secure.dmi.illinois.edu/course/crsCTLR.asp (Gies College of Business)
  </li>
   <li> Dataset 2: Teaching Records for all sections offered by Department 2025-26 (LAS, Gies College of Business) 
+
 Source: 
+
 https://secure.dmi.illinois.edu/course/crsget.asp (LAS)
 https://secure.dmi.illinois.edu/course/crsget.asp (Gies College of Business)</li>
 </ul>
