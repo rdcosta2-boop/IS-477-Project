@@ -11,8 +11,8 @@
 
 <h3> Team: Clearly define team member roles and responsibilities </h3>
 <ul>
-  <li> Emma: Emotional support? </li>
-  <li> Rhea: Emotional support? </li>
+  <li> Emma: Progress tracker, coder and reinforcer</li>
+  <li> Rhea: Progress tracker, coder and reinforcer </li>
 </ul>
 
 <h3> Datasets: Identify and describe the datasets that you will use.  </h3>
@@ -21,14 +21,12 @@
   <li> Dataset 1: Enrollments and IUs by Course, Subject, and Offering Department 2025-26 (LAS, Gies College of Business)
 
 Source:
-
 https://secure.dmi.illinois.edu/course/crsCTLR.asp (LAS)
 https://secure.dmi.illinois.edu/course/crsCTLR.asp (Gies College of Business)
  </li>
   <li> Dataset 2: Teaching Records for all sections offered by Department 2025-26 (LAS, Gies College of Business) 
 
 Source: 
-
 https://secure.dmi.illinois.edu/course/crsget.asp (LAS)
 https://secure.dmi.illinois.edu/course/crsget.asp (Gies College of Business)</li>
 </ul>
