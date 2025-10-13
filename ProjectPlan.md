@@ -31,20 +31,44 @@ https://secure.dmi.illinois.edu/course/crsget.asp (Gies College of Business)</li
 
 <h3> Timeline:  </h3>
 <h4> Plan: </h4>
-<p> <b>Week 8</b>
+<p> 
+<b>Week 8</b>
+
 Emma-Ethical data handling (cf. Module 2): Identification of all ethical, legal, or policy constraints and how they were addressed. This includes issues related to consent, privacy/confidentiality, copyright, licenses and terms of use.
 
 Rhea-Data collection and acquisition (cf. Module 3): Collection or acquisition of at least 2 different datasets from distinct trustworthy sources.</p>
 
-<h4> Timeline: </h4>
-<p> aaaaaaaaa </p>
+<b>Week 9</b>
+
+Emma-Extraction and enrichment (cf. Module 6),Data integration (cf. Module 7-8): Integration of datasets (Python/Pandas or SQL) 
+
+Rhea-Extraction and enrichment (cf. Module 6),Data integration (cf. Module 7-8): Integration of datasets (Python/Pandas or SQL)</p>
+
+<b>Week 10</b>
+
+Emma-
+
+Rhea-</p>
+
+<b>Week 11</b>
+
+Emma-
+
+Rhea-</p>
+
+<b>Week 12</b>
+
+Emma-
+
+Rhea-</p>
 
 <h3> Constraints: Describe any known constraints.</h3>
 <p> aaaaaaaaa </p>
 <p> aaaaaaaaaa </p>
 
 <h3> Gaps: Identify any known gaps or areas where you need additional input.
-Your plan should anticipate later course topics even if you don’t yet know all the details. It is expected that your plan will evolve over time. </h3>
+ </h3>
 
-<p> aaaaaaaaaaa </p>
+<p> Rhea-Lack of a strong coding background and only an introductory knowledge of SQL will be a constraint and require additional work and input. Additionally, due to a heavy courseload this semester, several midterms and submission deadlines fall around the planned timeline so timeline revisions are to be expected and additional support will be needed </p>
+
 <p> aaaaaaaaaaaaaaa </p>
