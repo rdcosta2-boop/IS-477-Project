@@ -15,6 +15,7 @@
 <ul>
   <li> Emma: Progress tracker, coder and reinforcer</li>
   <li> Rhea: Progress tracker, coder and reinforcer </li>
+  Both of us will ensure that we are on track with the project timeline, are contributing to project objectives, and satisfying rubric requirements. In case any of us gets too busy or caught up with other tasks, we will support each other and ensure burden sharing 
 </ul>
 
 
@@ -22,6 +23,8 @@
 <h3> Datasets: Identify and describe the datasets that you will use.  </h3>
 
 <ul>
+  All datasets used for this project may be accessed at (https://dmi.illinois.edu/index.htm)
+  Please use this link in case the ones below prompt a server error due to unsecure access
   <li> Dataset 1: Enrollments and IUs by Course, Subject, and Offering Department 2025-26 (LAS, Gies College of Business)
 
 Source:
@@ -31,8 +34,9 @@ https://secure.dmi.illinois.edu/course/crsCTLR.asp (Gies College of Business)
   <li> Dataset 2: Teaching Records for all sections offered by Department 2025-26 (LAS, Gies College of Business) 
 
 Source: 
-https://secure.dmi.illinois.edu/course/crsget.asp (LAS)
-https://secure.dmi.illinois.edu/course/crsget.asp (Gies College of Business)</li>
+[https://secure.dmi.illinois.edu/course/crsget.asp (LAS)
+https://secure.dmi.illinois.edu/course/crsget.asp (Gies College of Business)]
+</li>
 </ul>
 
 <br />
