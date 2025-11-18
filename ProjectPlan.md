@@ -8,6 +8,13 @@
   <li> Are there specific instructors who are popular amongst students?</li>
 
 
+<h3>FEEDBACK</h3>
+The stated project goal describes the assignment, but doesn't provide context for the research question. In your progress report, expand your project goal to explain the context of your proposed work (i.e., why are you interested in the specific research question? How do the datasets help you address the question?)
+
+<h3> RESPONSE </h3>
+
+
+
 
 </ul>
 
@@ -52,9 +59,9 @@ https://secure.dmi.illinois.edu/course/crsget.asp (Gies College of Business)]
 
 Emma- Ethical data handling (cf. Module 2): Identification of all ethical, legal, or policy constraints and how they were addressed. This includes issues related to consent, privacy/confidentiality, copyright, licenses and terms of use
 
-Rhea- Data collection and acquisition (cf. Module 3): Collection or acquisition of at least 2 different datasets from distinct trustworthy sources
+Emma- Data collection and acquisition (cf. Module 3): Collection or acquisition of at least 2 different datasets from distinct trustworthy sources
 
-Together- Data lifecycle (cf. Module 1): Relate your project to one or more of the lifecycle models discussed in class, review each other's work
+Emma- Data lifecycle (cf. Module 1): Relate your project to one or more of the lifecycle models discussed in class
 
 </p>
 
@@ -67,9 +74,9 @@ Together- Data lifecycle (cf. Module 1): Relate your project to one or more of t
   <li> Data integration (cf. Module 7-8)</li>
 </ul>
 
-Emma- Extraction and enrichment (cf. Module 6) 
+Rhea- Extraction and enrichment (cf. Module 6) 
 
-Rhea- Data integration (cf. Module 7-8): Integration of datasets (Python/Pandas or SQL)
+Emma- Data integration (cf. Module 7-8): Integration of datasets (Python/Pandas or SQL)
 
 Together- Storage and organization (cf. Modules 4-5): Select and describe a specific storage and organization strategy. This may include use of tabular, relational, or semi-structured models via filesystems or databases as well as filesystem structures and naming conventions, review each other's work
 
