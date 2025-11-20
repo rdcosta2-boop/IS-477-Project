@@ -2,7 +2,8 @@ Title: Comparing 10 year US stock returns to the S&P 500
 Contributors: 
 * Emma Bills (ebills2@illinois.edu)
 * Rhea Dcosta (rdcosta2@illinois.edu)
-* 
+
+  
 Summary: [500-1000 words] Description of your project, motivation, research question(s), and any findings.
 Data profile: [500-1000 words] Description of each dataset used including all ethical/legal constraints.
 
