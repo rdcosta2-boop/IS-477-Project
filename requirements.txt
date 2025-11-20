@@ -1,0 +1,3 @@
+$ pip freeze 
+virtual environments
+a container such as Docker (enable packaging and distribution of a complete software environment)
