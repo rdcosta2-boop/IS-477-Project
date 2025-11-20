@@ -45,10 +45,12 @@ We still need to complete:
 ### UPDATED TIMELINE
 
 Emma:
-From here until the due date, I will complete the following based on our Project Plan:
+From here until the due date, I will complete the following (or contribute in the following) based on our Project Plan:
 <ul>
-<li> Metadata and data documentation (cf. Module 15) </li>
-<li> Help create the README file </li>
+    <li> Workflow automatino and provenance (cf. Module 11-12) </li>
+    <li> Reproducibility and transparency (cf. Module 13)</li>
+    <li> Metadata and data documentation (cf. Module 15) </li>
+    <li> Help create the README file </li>
 </ul>
 
 Rhea:
@@ -81,6 +83,10 @@ From here until the due date, I will complete the following based on our Project
 The feedback we recieved: "The stated project goal describes the assignment, but doesn't provide context for the research question. In your progress report, expand your project goal to explain the context of your proposed work (i.e., why are you interested in the specific research question? How do the datasets help you address the question?)"
 
 In response to this feedback, we have decided to change our datasets.  We have pulled data for stocks from every sector and we want to answer the following questions:
+<ul>
 <li>Which stocks and sectors have outperformed the S&P 500 in the last 10 years?</li>
 <li>Can we make predictions for the S&P 500 using the 11 stocks in our portfolio?</li>
+</ul>
 
+
+We are interested in these specific research questions because we want to see if a group of certain stocks can outperform a broader market index, and the relationship between the two.  These datasets will help address the question by allowing us to analyze the trends in a specific timeframe, and this will provide data that will help us to explore the relationship between certain stocks against S&P500. 
