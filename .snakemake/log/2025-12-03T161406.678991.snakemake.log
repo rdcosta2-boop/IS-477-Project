@@ -1,0 +1,4 @@
+Building DAG of jobs...
+Deleting data/processed/merged_df.csv
+Deleting data/raw/Stocks_2015_2025.csv
+Deleting data/raw/sp500_2015_2025.csv
