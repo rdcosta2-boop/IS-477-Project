@@ -49,7 +49,7 @@ We still need to complete:
 Emma:
 From here until the due date, I will complete the following (or contribute in the following) based on our Project Plan:
 <ul>
-    <li> Workflow automatino and provenance (cf. Module 11-12) </li>
+    <li> Workflow automation and provenance (cf. Module 11-12) </li>
     <li> Reproducibility and transparency (cf. Module 13)</li>
     <li> Metadata and data documentation (cf. Module 15) </li>
     <li> Help create the README file </li>
@@ -60,7 +60,7 @@ From here until the due date, I will complete the following based on our Project
 <ul>
 <li> Extraction and enrichment (cf. Module 6) </li>
 <li> Data cleaning (cf. Module 10)</li>
-<li> Workflow automatino and provenance (cf. Module 11-12)</li>
+<li> Workflow automation and provenance (cf. Module 11-12)</li>
 <li> Reproducibility and transparency (cf. Module 13)</li>
 <li> Metadata and data documentation (cf. Module 15)</li>
 </ul>
