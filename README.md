@@ -1,4 +1,4 @@
-Title: Comparing 10 year US stock returns to the S&P 500
+**Title: Comparing 10 year US stock returns to the S&P 500**
 Contributors: 
 * Emma Bills (ebills2@illinois.edu)
 * Rhea Dcosta (rdcosta2@illinois.edu)
