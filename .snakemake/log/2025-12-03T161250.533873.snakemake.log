@@ -1,0 +1,152 @@
+Assuming unrestricted shared filesystem usage.
+host: wirelessprv-10-193-173-36.near.illinois.edu
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                count
+---------------  -------
+all                    1
+checksum               1
+download_sp500         1
+download_stocks        1
+merge_data             1
+plot_data              1
+total                  6
+
+Select jobs to execute...
+Execute 1 jobs...
+[Wed Dec  3 16:12:52 2025]
+localrule download_sp500:
+    output: data/raw/sp500_2015_2025.csv
+    jobid: 4
+    reason: Missing output files: data/raw/sp500_2015_2025.csv
+    resources: tmpdir=/var/folders/vx/tdx7885s7g58xxw5fkccpgsr0000gn/T
+Select jobs to execute...
+[Wed Dec  3 16:12:54 2025]
+Finished jobid: 4 (Rule: download_sp500)
+1 of 6 steps (17%) done
+Execute 1 jobs...
+[Wed Dec  3 16:12:54 2025]
+localrule download_stocks:
+    output: data/raw/Stocks_2015_2025.csv
+    jobid: 3
+    reason: Missing output files: data/raw/Stocks_2015_2025.csv
+    resources: tmpdir=/var/folders/vx/tdx7885s7g58xxw5fkccpgsr0000gn/T
+[Wed Dec  3 16:12:55 2025]
+Finished jobid: 3 (Rule: download_stocks)
+2 of 6 steps (33%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Wed Dec  3 16:12:55 2025]
+localrule merge_data:
+    input: data/raw/Stocks_2015_2025.csv, data/raw/sp500_2015_2025.csv
+    output: data/processed/merged_df.csv
+    jobid: 2
+    reason: Missing output files: data/processed/merged_df.csv; Input files updated by another job: data/raw/Stocks_2015_2025.csv, data/raw/sp500_2015_2025.csv
+    resources: tmpdir=/var/folders/vx/tdx7885s7g58xxw5fkccpgsr0000gn/T
+[Wed Dec  3 16:12:57 2025]
+Finished jobid: 2 (Rule: merge_data)
+3 of 6 steps (50%) done
+Select jobs to execute...
+Execute 2 jobs...
+[Wed Dec  3 16:12:57 2025]
+localrule checksum:
+    input: data/processed/merged_df.csv
+    output: data/processed/merged_df.sha
+    jobid: 1
+    reason: Missing output files: data/processed/merged_df.sha; Input files updated by another job: data/processed/merged_df.csv
+    resources: tmpdir=/var/folders/vx/tdx7885s7g58xxw5fkccpgsr0000gn/T
+[Wed Dec  3 16:12:57 2025]
+localrule plot_data:
+    input: data/processed/merged_df.csv
+    output: data/processed/performance_chart.png
+    jobid: 5
+    reason: Missing output files: data/processed/performance_chart.png; Input files updated by another job: data/processed/merged_df.csv
+    resources: tmpdir=/var/folders/vx/tdx7885s7g58xxw5fkccpgsr0000gn/T
+Traceback (most recent call last):
+
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/snakemake/executors/local.py", line 233, in spawn_job
+    subprocess.check_call(cmd, shell=True)
+
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/subprocess.py", line 413, in check_call
+    raise CalledProcessError(retcode, cmd)
+
+subprocess.CalledProcessError: Command 'cd /Users/emma/Desktop/IS-477-Project && /Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11 -m snakemake --snakefile '/Users/emma/Desktop/IS-477-Project/Snakefile' --target-jobs 'plot_data:' --allowed-rules plot_data --cores 1 --attempt 1 --force-use-threads  --force --target-files-omit-workdir-adjustment --max-inventory-time 0 --retries 0 --nocolor --no-hooks --nolock --ignore-incomplete --rerun-triggers input software-env code params mtime --conda-frontend 'conda' --shared-fs-usage source-cache input-output software-deployment persistence storage-local-copies sources --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --local-storage-prefix base64//LnNuYWtlbWFrZS9zdG9yYWdl --scheduler-solver-path '/Library/Frameworks/Python.framework/Versions/3.11/bin' --runtime-source-cache-path '/Users/emma/Library/Caches/snakemake/snakemake/source-cache/runtime-cache/tmp6tsbeh7n' --default-resources base64//dG1wZGlyPXN5c3RlbV90bXBkaXI= --quiet progress rules host --mode 'subprocess' --local-groupid 'local'' returned non-zero exit status 1.
+
+
+During handling of the above exception, another exception occurred:
+
+
+Traceback (most recent call last):
+
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/snakemake/executors/local.py", line 248, in cached_or_run
+    run_func(*args)
+
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/snakemake/executors/local.py", line 235, in spawn_job
+    raise SpawnedJobError()
+
+snakemake.exceptions.SpawnedJobError
+
+Traceback (most recent call last):
+
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/snakemake/executors/local.py", line 233, in spawn_job
+    subprocess.check_call(cmd, shell=True)
+
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/subprocess.py", line 413, in check_call
+    raise CalledProcessError(retcode, cmd)
+
+subprocess.CalledProcessError: Command 'cd /Users/emma/Desktop/IS-477-Project && /Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11 -m snakemake --snakefile '/Users/emma/Desktop/IS-477-Project/Snakefile' --target-jobs 'checksum:' --allowed-rules checksum --cores 1 --attempt 1 --force-use-threads  --force --target-files-omit-workdir-adjustment --max-inventory-time 0 --retries 0 --nocolor --no-hooks --nolock --ignore-incomplete --rerun-triggers input software-env code params mtime --conda-frontend 'conda' --shared-fs-usage source-cache input-output software-deployment persistence storage-local-copies sources --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --local-storage-prefix base64//LnNuYWtlbWFrZS9zdG9yYWdl --scheduler-solver-path '/Library/Frameworks/Python.framework/Versions/3.11/bin' --runtime-source-cache-path '/Users/emma/Library/Caches/snakemake/snakemake/source-cache/runtime-cache/tmp6tsbeh7n' --default-resources base64//dG1wZGlyPXN5c3RlbV90bXBkaXI= --quiet progress rules host --mode 'subprocess' --local-groupid 'local'' returned non-zero exit status 1.
+
+
+During handling of the above exception, another exception occurred:
+
+
+Traceback (most recent call last):
+
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/snakemake/executors/local.py", line 248, in cached_or_run
+    run_func(*args)
+
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/snakemake/executors/local.py", line 235, in spawn_job
+    raise SpawnedJobError()
+
+snakemake.exceptions.SpawnedJobError
+
+[Wed Dec  3 16:12:59 2025]
+Error in rule plot_data:
+    message: None
+    jobid: 5
+    input: data/processed/merged_df.csv
+    output: data/processed/performance_chart.png
+[Wed Dec  3 16:12:59 2025]
+Error in rule checksum:
+    message: None
+    jobid: 1
+    input: data/processed/merged_df.csv
+    output: data/processed/merged_df.sha
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Wed Dec  3 16:12:59 2025]
+Error in rule checksum:
+    message: None
+    jobid: 1
+    input: data/processed/merged_df.csv
+    output: data/processed/merged_df.sha
+[Wed Dec  3 16:12:59 2025]
+Error in rule plot_data:
+    message: None
+    jobid: 5
+    input: data/processed/merged_df.csv
+    output: data/processed/performance_chart.png
+Complete log(s): /Users/emma/Desktop/IS-477-Project/.snakemake/log/2025-12-03T161250.533873.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

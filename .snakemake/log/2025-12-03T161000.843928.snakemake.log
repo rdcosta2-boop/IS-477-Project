@@ -1,0 +1,7 @@
+Assuming unrestricted shared filesystem usage.
+host: wirelessprv-10-193-173-36.near.illinois.edu
+Building DAG of jobs...
+ChildIOException:
+File/directory is a child to another output:
+(PosixPath('/Users/emma/Desktop/IS-477-Project/data/processed'), setup_dirs)
+(PosixPath('/Users/emma/Desktop/IS-477-Project/data/processed/merged_df.csv'), merge_data)

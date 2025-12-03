@@ -1,0 +1,4 @@
+SyntaxError in file "/Users/emma/Desktop/IS-477-Project/Snakefile", line 69:
+positional argument follows keyword argument:
+)
+

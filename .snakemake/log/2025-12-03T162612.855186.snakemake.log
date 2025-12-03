@@ -1,0 +1,37 @@
+Assuming unrestricted shared filesystem usage.
+host: wirelessprv-10-193-173-36.near.illinois.edu
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job          count
+---------  -------
+all              1
+plot_data        1
+total            2
+
+Select jobs to execute...
+Execute 1 jobs...
+[Wed Dec  3 16:26:13 2025]
+localrule plot_data:
+    input: data/processed/merged_df.csv
+    output: data/processed/performance_chart.png
+    jobid: 5
+    reason: Missing output files: data/processed/performance_chart.png
+    resources: tmpdir=/var/folders/vx/tdx7885s7g58xxw5fkccpgsr0000gn/T
+[Wed Dec  3 16:26:15 2025]
+Finished jobid: 5 (Rule: plot_data)
+1 of 2 steps (50%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Wed Dec  3 16:26:15 2025]
+localrule all:
+    input: data/processed/merged_df.sha, data/processed/performance_chart.png
+    jobid: 0
+    reason: Input files updated by another job: data/processed/performance_chart.png
+    resources: tmpdir=/var/folders/vx/tdx7885s7g58xxw5fkccpgsr0000gn/T
+[Wed Dec  3 16:26:15 2025]
+Finished jobid: 0 (Rule: all)
+2 of 2 steps (100%) done
+Complete log(s): /Users/emma/Desktop/IS-477-Project/.snakemake/log/2025-12-03T162612.855186.snakemake.log
