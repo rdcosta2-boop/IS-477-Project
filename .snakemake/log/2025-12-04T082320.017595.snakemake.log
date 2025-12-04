@@ -1,0 +1,69 @@
+Assuming unrestricted shared filesystem usage.
+host: RAAAAA-CHOMP.local
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                     count
+--------------------  -------
+all                         1
+clean_and_merge_data        1
+download_sp500_data         1
+download_stock_data         1
+generate_checksum           1
+plot_data                   1
+total                       6
+
+Select jobs to execute...
+Execute 1 jobs...
+[Thu Dec  4 08:23:20 2025]
+localrule download_sp500_data:
+    output: data/raw/sp500_data.csv
+    jobid: 4
+    reason: Missing output files: data/raw/sp500_data.csv
+    resources: tmpdir=/var/folders/vx/tdx7885s7g58xxw5fkccpgsr0000gn/T
+Select jobs to execute...
+Traceback (most recent call last):
+
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/snakemake/executors/local.py", line 233, in spawn_job
+    subprocess.check_call(cmd, shell=True)
+
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/subprocess.py", line 413, in check_call
+    raise CalledProcessError(retcode, cmd)
+
+subprocess.CalledProcessError: Command 'cd /Users/emma/Desktop/IS-477-Project && /Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11 -m snakemake --snakefile '/Users/emma/Desktop/IS-477-Project/Snakefile' --target-jobs 'download_sp500_data:' --allowed-rules download_sp500_data --cores 1 --attempt 1 --force-use-threads  --force --target-files-omit-workdir-adjustment --max-inventory-time 0 --retries 0 --nocolor --no-hooks --nolock --ignore-incomplete --rerun-triggers input params software-env code mtime --conda-frontend 'conda' --shared-fs-usage software-deployment persistence input-output sources source-cache storage-local-copies --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --local-storage-prefix base64//LnNuYWtlbWFrZS9zdG9yYWdl --scheduler-solver-path '/Library/Frameworks/Python.framework/Versions/3.11/bin' --runtime-source-cache-path '/Users/emma/Library/Caches/snakemake/snakemake/source-cache/runtime-cache/tmpv3pl0h0d' --default-resources base64//dG1wZGlyPXN5c3RlbV90bXBkaXI= --quiet progress rules host --mode 'subprocess' --local-groupid 'local'' returned non-zero exit status 1.
+
+
+During handling of the above exception, another exception occurred:
+
+
+Traceback (most recent call last):
+
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/snakemake/executors/local.py", line 248, in cached_or_run
+    run_func(*args)
+
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/snakemake/executors/local.py", line 235, in spawn_job
+    raise SpawnedJobError()
+
+snakemake.exceptions.SpawnedJobError
+
+[Thu Dec  4 08:23:22 2025]
+Error in rule download_sp500_data:
+    message: None
+    jobid: 4
+    output: data/raw/sp500_data.csv
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Thu Dec  4 08:23:22 2025]
+Error in rule download_sp500_data:
+    message: None
+    jobid: 4
+    output: data/raw/sp500_data.csv
+Complete log(s): /Users/emma/Desktop/IS-477-Project/.snakemake/log/2025-12-04T082320.017595.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

@@ -1,28 +1,39 @@
 
 # Snakefile
 
-configfile: "config.yaml"
-
 import workflow as wf
 
+config = {
+    "fred_api_key": '3dd37ba3122e1228a5bacd7f8c6f3775',
 
+    #parameters
+    "tickers": ['NVDA','JPM','WMT','TSLA','AMZN','AVGO','CAT','XOM','JNJ','ABT','PLD'],
+    "start_date": '2016-01-01',
+    "interval": '1mo',
+    "sp500_series_id": 'SP500',
+    "frequency": 'm',
+
+    # Output File Paths 
+    "raw_stock_data": "data/raw/Stocks_2015_2025.csv",
+    "raw_sp500_data": "data/raw/sp500_2015_2025.csv",
+    "merged_data": "data/processed/merged_df.csv",
+    "checksum_output": "data/checksums/merged_df.sha",
+    "plot_output": "data/processed/performance_chart.png"
+}
+
+#final outputs
+FINAL_OUTPUTS = [
+    config["plot_output"],
+    config["checksum_output"]
+]
+
+# Rule all
 rule all:
     input:
-        config["checksum_output"],
-        config["plot_output"] 
+        FINAL_OUTPUTS
 
-
-rule setup_dirs:
-    output:
-        directory("data/raw"),
-        directory("data/processed")
-    shell:
-        "mkdir -p {output}"
-
-
-
-# Rule 1 Download Stock
-rule download_stocks:
+# Rule 1: download stock
+rule download_stock_data: 
     output:
         config["raw_stock_data"]
     params:
@@ -30,16 +41,14 @@ rule download_stocks:
         start_date=config["start_date"],
         interval=config["interval"]
     run:
-        wf.download_stock_data(
-            params.tickers, 
-            params.start_date, 
-            params.interval, 
-            str(output)
+        download_stock_data(
+            tickers=params.tickers,
+            start_date=params.start_date,
+            interval=params.interval,
+            output_file=output[0]
         )
 
-
-# Rule 2 S&P
-rule download_sp500:
+rule download_sp500_data: # Rule 2: download S&P
     output:
         config["raw_sp500_data"]
     params:
@@ -48,51 +57,45 @@ rule download_sp500:
         start_date=config["start_date"],
         frequency=config["frequency"]
     run:
-        wf.download_sp500_data(
-            params.api_key, 
-            params.series_id, 
-            params.start_date, 
-            params.frequency, 
-            str(output)
+        download_sp500_data(
+            api_key=params.api_key,
+            series_id=params.series_id,
+            start_date=params.start_date,
+            frequency=params.frequency,
+            output_file=output[0]
         )
 
-
-# Rule 3 Merge Clean
-rule merge_data:
+rule clean_and_merge_data: # Rule 3: Clean and merge
     input:
-        stock_file=config["raw_stock_data"],
-        sp500_file=config["raw_sp500_data"]
+        stock=config["raw_stock_data"],
+        sp500=config["raw_sp500_data"]
     output:
         config["merged_data"]
     run:
-        wf.clean_and_merge_data(
-            str(input.stock_file), 
-            str(input.sp500_file), 
-            str(output)
+        clean_and_merge_data(
+            stock_input_file=input.stock,
+            sp500_input_file=input.sp500,
+            output_file=output[0]
         )
 
-
-# Rule 4: Checksum
-rule checksum:
+rule generate_checksum: # Rule 4: Checksums
     input:
-        data_file=config["merged_data"]
+        config["merged_data"]
     output:
         config["checksum_output"]
     run:
-        wf.generate_checksum(
-            str(input.data_file), 
-            str(output)
+        generate_checksum(
+            input_file=input[0],
+            output_file=output[0]
         )
 
-
-# Rule 5 Plot
-rule plot_data:
+rule plot_data: # Rule 5: Plot
     input:
-        data_file=config["merged_data"]
+        config["merged_data"]
     output:
         config["plot_output"]
     run:
-        wf.generate_plot(
-            str(input.data_file), 
-            str(output)
+        generate_plot(
+            input_file=input[0],
+            output_file=output[0]
         )

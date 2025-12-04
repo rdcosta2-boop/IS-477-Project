@@ -1,0 +1,4 @@
+IndentationError in file "/Users/emma/Desktop/IS-477-Project/Snakefile", line 37:
+unexpected indent:
+            output_file=output[0]
+
