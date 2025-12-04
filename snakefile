@@ -1,12 +1,18 @@
 
 # Snakefile
 
-import workflow as wf
+from workflow import (
+    download_stock_data,
+    download_sp500_data,
+    clean_and_merge_data,
+    generate_checksum,
+    generate_plot
+)
 
 config = {
     "fred_api_key": '3dd37ba3122e1228a5bacd7f8c6f3775',
 
-    #parameters
+    # parameters
     "tickers": ['NVDA','JPM','WMT','TSLA','AMZN','AVGO','CAT','XOM','JNJ','ABT','PLD'],
     "start_date": '2016-01-01',
     "interval": '1mo',
@@ -21,7 +27,7 @@ config = {
     "plot_output": "data/processed/performance_chart.png"
 }
 
-#final outputs
+# final outputs
 FINAL_OUTPUTS = [
     config["plot_output"],
     config["checksum_output"]
@@ -33,7 +39,7 @@ rule all:
         FINAL_OUTPUTS
 
 # Rule 1: download stock
-rule download_stock_data: 
+rule download_stock_data:
     output:
         config["raw_stock_data"]
     params:
@@ -48,7 +54,8 @@ rule download_stock_data:
             output_file=output[0]
         )
 
-rule download_sp500_data: # Rule 2: download S&P
+# Rule 2: download S&P
+rule download_sp500_data:
     output:
         config["raw_sp500_data"]
     params:
@@ -65,7 +72,8 @@ rule download_sp500_data: # Rule 2: download S&P
             output_file=output[0]
         )
 
-rule clean_and_merge_data: # Rule 3: Clean and merge
+# Rule 3: Clean and merge
+rule clean_and_merge_data:
     input:
         stock=config["raw_stock_data"],
         sp500=config["raw_sp500_data"]
@@ -78,7 +86,8 @@ rule clean_and_merge_data: # Rule 3: Clean and merge
             output_file=output[0]
         )
 
-rule generate_checksum: # Rule 4: Checksums
+# Rule 4: Checksums
+rule generate_checksum:
     input:
         config["merged_data"]
     output:
@@ -89,7 +98,8 @@ rule generate_checksum: # Rule 4: Checksums
             output_file=output[0]
         )
 
-rule plot_data: # Rule 5: Plot
+# Rule 5: Plot
+rule plot_data:
     input:
         config["merged_data"]
     output:
