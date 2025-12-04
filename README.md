@@ -66,14 +66,35 @@ Sequence of steps used in our project:
 1.  Importing libraries 
 <ul>import yfinance as yf
 import pandas as pd
-import openpyxl</ul>
+import openpyxl
+from fredapi import Fred
+import pandas as pd
+import matplotlib.pyplot as plt\
+import hashlib</ul>
 
 
 2. Loading dataset 1 using the `yfinance` library
 (i) Create a list of tickers for the stocks we want to import
 (ii) use the yf.download function to pull the stock data. Specify start date and data frequency (interval) parameters
+(iii) Store the data in a csv file and convert to dataframe
 
-3. 
+3. Loading dataset 2 using the fredapi API pull
+(i) Obtain an api key from the St.Louis FRED website
+(ii) Use the .get_series function from the `fredapi` library to fetch the series. The S&P500 series id is 'SP500'. Similary, specify the series start date, (end date optional), and frequency parameters. Ensure a datetime index is present.
+(iii) Store the data in a csv file and convert to dataframe
+
+4. Data cleaning
+* The S&P500 series requires no cleaning
+* The data pulled from Yahoo finance has a multi-level schema. Level 1 of the schema contains price attributes (i.e. opening price, closing price, adjusted closing price, volume etc. on a given day) and level 2 of the schema contains the ticker symbol of the stock (NVDA, ABT, TSLA etc.). 
+- create a function using `pd.MultiIndex` in `pandas` to format the schema and retrieve only the adjusted closing price for each stock which is what will be used in analysis.
+- Specify a datetime index for the dataframe to facilitate data integration
+- store the cleaned dataset in a dataframe
+
+5. Data Integration
+* Use pd.merge to merge the two dataframes on the datetime index
+
+6. Data authenticity 
+Use the hashlib library to assign a unique SHA256 checksum value to our merged dataframe
 
 
 References: Formatted citations for any papers, datasets, or software used in your project.
