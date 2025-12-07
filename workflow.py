@@ -6,6 +6,8 @@ import pandas as pd
 from fredapi import Fred
 import hashlib
 import os
+import subprocess
+from pathlib import Path
 
 def ensure_dir(filepath):
     os.makedirs(os.path.dirname(filepath), exist_ok=True)
@@ -82,20 +84,41 @@ def clean_and_merge_data(stock_input_file, sp500_input_file, output_file):
 
 def generate_checksum(input_file, output_file):
     
+    ensure_dir(output_file)
     
-    hash_initiate = hashlib.sha256()
+    hasher = hashlib.sha256()
     
-    with open(input_file, "rb") as f:
-        while chunk := f.read(4096):
-            hash_initiate.update(chunk)
+    with open(input_file, 'rb') as file:
+        while True:
+            chunk = file.read(4096)
+            if not chunk:
+                break
+            hasher.update(chunk)
             
-    sha = hash_initiate.hexdigest()
+    checksum = hasher.hexdigest()
+    
+    with open(output_file, 'w') as f:
+        f.write(checksum)
+        
+def run_regression_test(calculated_checksum_file, trusted_checksum, output_file):
     
     ensure_dir(output_file)
-    with open(output_file, 'w') as f:
-        f.write(sha)
+    
+    with open(calculated_checksum_file, 'r') as f:
+        calculated_checksum = f.read().strip()
         
+    
+    success = calculated_checksum == trusted_checksum
+    
+    result = (
+        f"PASS: Calculated Checksum ({calculated_checksum[:8]}...) matches Trusted Checksum ({trusted_checksum[:8]}...)."
+        if success else
+        f"FAIL: Calculated Checksum ({calculated_checksum[:8]}...) does NOT match Trusted Checksum ({trusted_checksum[:8]}...)."
+    )
 
+    # 4. Write result to output file
+    with open(output_file, 'w') as f:
+        f.write(result + '\n')
 
 def generate_plot(input_file, output_file):
     
@@ -108,8 +131,7 @@ def generate_plot(input_file, output_file):
     
     
     df_normalized = (df_numeric / df_numeric.iloc[0]) * 100
-
-
+    
     plt.figure(figsize=(14, 7))
     
     for column in df_normalized.columns:

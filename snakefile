@@ -6,7 +6,8 @@ from workflow import (
     download_sp500_data,
     clean_and_merge_data,
     generate_checksum,
-    generate_plot
+    generate_plot,
+    run_regression_test
 )
 
 config = {
@@ -24,13 +25,18 @@ config = {
     "raw_sp500_data": "data/raw/sp500_2015_2025.csv",
     "merged_data": "data/processed/merged_df.csv",
     "checksum_output": "data/checksums/merged_df.sha",
-    "plot_output": "data/processed/performance_chart.png"
+    "plot_output": "data/processed/performance_chart.png",
+    "dag_output": "data/processed/dag.png",
+    "regression_test_output": "data/checksums/regression_test_result.txt",
+    "trusted_checksum": "a4f29a06d27842ffeb5ee2bb9a2652fe7dac682b6e2a2b26c6ef1f756f50480e"
 }
 
 # final outputs
 FINAL_OUTPUTS = [
     config["plot_output"],
-    config["checksum_output"]
+    config["checksum_output"],
+    config["dag_output"],
+    config["regression_test_output"]
 ]
 
 # Rule all
@@ -98,7 +104,23 @@ rule generate_checksum:
             output_file=output[0]
         )
 
-# Rule 5: Plot
+# Rule 5: Regression Test 
+rule run_regression_test: 
+    input:
+        checksum=config["checksum_output"]
+    output:
+        config["regression_test_output"]
+    params:
+        trusted_checksum=config["trusted_checksum"]
+    run:
+        run_regression_test(
+            calculated_checksum_file=input.checksum,
+            trusted_checksum=params.trusted_checksum,
+            output_file=output[0]
+        )
+
+
+# Rule 6: Plot
 rule plot_data:
     input:
         config["merged_data"]
@@ -109,3 +131,15 @@ rule plot_data:
             input_file=input[0],
             output_file=output[0]
         )
+
+# Rule 6: Workflow Visualization
+rule generate_dag: 
+    input:
+        config["plot_output"],
+        config["checksum_output"]
+    output:
+        config["dag_output"]
+    shell:
+        """
+        snakemake --dag | dot -Tpng > {output}
+        """

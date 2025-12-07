@@ -1,0 +1,4 @@
+SyntaxError in file "/Users/emma/Desktop/IS-477-Project/Snakefile", line 34:
+invalid syntax. Perhaps you forgot a comma?:
+    config["checksum_output"]
+

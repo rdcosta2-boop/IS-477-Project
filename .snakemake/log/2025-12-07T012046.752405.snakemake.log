@@ -1,0 +1,37 @@
+Assuming unrestricted shared filesystem usage.
+host: RAAAAA-CHOMP.lan
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 8
+Rules claiming more threads will be scaled down.
+Job stats:
+job                    count
+-------------------  -------
+all                        1
+run_regression_test        1
+total                      2
+
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Dec  7 01:20:47 2025]
+localrule run_regression_test:
+    input: data/checksums/merged_df.sha
+    output: data/checksums/regression_test_result.txt
+    jobid: 7
+    reason: Params have changed since last execution: Union of exclusive params before and now across all output: before: 'c4d7a3e2e3408bd5aa4d3a98b1752c29701ee424a9ff1b14a46773e41e42a9a8' now: 'a4f29a06d27842ffeb5ee2bb9a2652fe7dac682b6e2a2b26c6ef1f756f50480e' 
+    resources: tmpdir=/var/folders/vx/tdx7885s7g58xxw5fkccpgsr0000gn/T
+[Sun Dec  7 01:20:49 2025]
+Finished jobid: 7 (Rule: run_regression_test)
+1 of 2 steps (50%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Dec  7 01:20:49 2025]
+localrule all:
+    input: data/processed/performance_chart.png, data/checksums/merged_df.sha, data/processed/dag.png, data/checksums/regression_test_result.txt
+    jobid: 0
+    reason: Input files updated by another job: data/checksums/regression_test_result.txt
+    resources: tmpdir=/var/folders/vx/tdx7885s7g58xxw5fkccpgsr0000gn/T
+[Sun Dec  7 01:20:49 2025]
+Finished jobid: 0 (Rule: all)
+2 of 2 steps (100%) done
+Complete log(s): /Users/emma/Desktop/IS-477-Project/.snakemake/log/2025-12-07T012046.752405.snakemake.log
