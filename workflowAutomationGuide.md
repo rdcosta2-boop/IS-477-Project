@@ -7,7 +7,8 @@ Next, you need to run this command in your terminal:
 
 `bash run_all.sh`
   
-**IMPORTANT**If it's the first time running the workflow, the checksum will be inaccurate, so once you run it, copy the string that is found by navigating to **data/checkums/merged_df.sha** and paste it as value for `trusted_checksum` in the `config` parameter in the snakefile.
+## **IMPORTANT**   
+If it's the first time running the workflow, the checksum will be inaccurate, so once you run it, copy the string that is found by navigating to **data/checkums/merged_df.sha** and paste it as value for `trusted_checksum` in the `config` parameter in the snakefile.
 
 Then, run the workflow again by typing `snakemake --cores all`.  
 
