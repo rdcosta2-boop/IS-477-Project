@@ -1,5 +1,5 @@
 
-echo "1. Installing Required Python Downloads!!!"
+echo "1. Installing Required Python stuff!!!"
 # Install all the things you need like the Python downloads and libraries
 pip install snakemake || { echo "Failed to install Snakemake, bye bye!!"; exit 1; }
 pip install yfinance pandas fredapi matplotlib || { echo "Failed to install Python libraries, bye bye!!"; exit 1; }
