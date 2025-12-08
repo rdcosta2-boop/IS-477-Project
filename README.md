@@ -64,20 +64,20 @@ The second dataset we chose is the historical S&P 500 Index data from the Federa
 #### Findings: 
 
 We plotted the time series in our data i.e. we plotted our stocks and the S&P500 index. Nvidia Inc. (NVDA) outperformed the other stocks and the benchmark S&P500 by a significant margin, with the divergence in returns increasing exponentially between 2023 and now. The other stocks which stand out and have done exceptionally well in the last 5 years are Broadcom Inc. (AVGO) and Tesla (TSLA).
-Stocks like Caterpillar (CAT) and Johnson & Johnson (JNJ) have been doing a little bit better in the recent past, indicating possible sector rotation amongst investors. 
+Stocks like Caterpillar (CAT) and Johnson & Johnson (JNJ) have been doing a little bit better in the recent past, indicating possible sector rotation amongst investors or positive earnings surprises. Other stocks have done moderately relative to the S&P500. Given an expected Fed rate cut in the near term, and emerging data on downbeat consumer confidence and bleak economic outlook, we expect defensive stocks in our data to outperform. We expect to see improved returns from Walmart, JP Morgan, Abbott, and Johnson & Johnson in the next 6-9 months. Other stocks will do moderately. Given the volatility of tech stocks as seen in the visualization in data/processed/performance_chart.png, we believe these stocks are extremely sensitive to earnings announcements and valuations. Nvidia has outperformed other stocks excessively and it is at a risk of getting torpedoed given its bubble-like valuation. Overall, analyzing and comparing the performance of such diverse stocks with the benchmark provides more insight into the returns of various industries and gives some indication on stock and sector performance going forward
 
 
 
-Future work: [~500-1000 words] Brief discussion of any lessons learned and potential future work
+#### Future work: 
 
-<u>Lessons learned</u>: Given the wide scope of this project, something we learned and would try to do differently is be more organized because this project has several moving parts. We would recommend first going through the requirements.txt file to ensure that you have all the software dependencies installed. Then we would recommend reading through the documentation, and looking at our data quality assessments. Lastly, you should review our scripts and use our Snakemake files to replicate our findings.
+<u>Lessons learned</u>: Given the wide scope of this project, something we learned is being organized because this project has several moving parts. We would recommend first going through the requirements.txt file to ensure that you have all the software dependencies installed. Then we would recommend reading through the documentation, and looking at our data quality assessments. Lastly, you should review our scripts and use our Snakemake files to replicate our findings. Refer to our reproducibility section for more guidance. 
 
-<u>Future work</u>: While we have only used 11 stocks in our analysis, future work could extend our project in terms of scale and analyze a larger number of stocks.
+<u>Future work</u>: While we have only used 11 stocks in our analysis, future work could extend our project in terms of scale and analyze a larger number of stocks. Although we used background knowledge and simple exploratory data visualizations to answer our research questions, our datasets are excellent and allow for analysis of tremendous depth. You can use Machine Learning and time series modeling methods for much more robust analysis.
 
 
 
 #### Reproducing:
-Sequence of steps used in our project:
+***Sequence of steps used in our project***:
 
 1.  Importing libraries 
 <ul>import yfinance as yf
@@ -130,6 +130,13 @@ Create a snakefile and use snakemake to create an automated end-to-end workflow
 
 Documentation: https://snakemake.readthedocs.io/en/stable/
 
+* Assign a checksum to the snakemake file to ensure file integrity so that if the checksum fails, it can indicate some corruption to the files. 
+
+***Reproducing our results***
+
+To reproduce our results on your operating system, you can run the terminal command `bash run all.sh` and our results will be reproduced on your computer or operating system even if software versions change because Snakemake runs the steps in isolated environments.
+
+Navigate to `data/processed/dag.png` to view the directed acyclic graph for our workflow to visualize and better understand our process and replicate it yourself.
 
 #### References:
 
@@ -145,5 +152,23 @@ yfinance library documentation: https://ranaroussi.github.io/yfinance/index.html
 Pandas Requests Library Documentation: https://docs.python-requests.org/en/latest/index.html
 
 FRED API Documentation: https://github.com/mortada/fredapi  
+
+#### Metadata and Data Documentation
+Our data involves time series and is very easy to interpret.
+**Yahoo Finance dataset**
+Each observation/row/tuple corresponds to a month and each of these observations are serially correlated. Each variable/attribute/column is the closing price of a stock in $ values on the last day of the month. 
+
+Our observations start from January 2016 till November 2025
+
+**FRED dataset**
+Each observation/row/tuple corresponds to a month and each of these observations are serially correlated. Each variable/attribute/column is a number corresponding to the S&P 500 index level at close (4PM ET) on that given day. 
+
+Our observations start from January 2016 till November 2025. The index data is not seasonally adjusted.
+
+#### Validation using schema.org
+We validated our FRED SP500 series using the schema.org metadata validation function and it meets all conformance standards.
+
+However, when we passed the Yahoo finance datasets through the schema.org validator, it did not detect any metadata because there isn't any. There is only a minor note made on the Yahoo Finance website that the 'Adjusted close price is price adjusted for splits and dividend and/or capital gain distrubutions. While the lack of a structured codebook is not ideal, this could be because there is essentially only one variable price and all its attributes such as open, close etc. are intuitive. 
+
   
     

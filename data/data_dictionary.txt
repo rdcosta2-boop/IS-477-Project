@@ -1,0 +1,13 @@
+Metadata and Data Documentation
+
+Our data involves time series and is very easy to interpret.
+
+
+Yahoo Finance dataset
+Each observation/row/tuple corresponds to a month and each of these observations are serially correlated. Each variable/attribute/column is the closing price of a stock in $ values on the last day of the month. Our observations start from January 2016 till November 2025
+
+FRED dataset
+Each observation/row/tuple corresponds to a month and each of these observations are serially correlated. Each variable/attribute/column is a number corresponding to the S&P 500 index level at close (4PM ET) on that given day. 
+Our observations start from January 2016 till November 2025. The index data is not seasonally adjusted.
+  
+    
