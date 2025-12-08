@@ -6,7 +6,7 @@ Contributors:
 
   
 #### Summary
-Our project involves comparing stock market returns from 11 popular US stocks to the return on the S&P 500, a common equity benchmark, over the last 10 years. As a Finance + Data Science major, this area was personally relevant for me. For Emma, her motivation is a keen interest in the workings of the stock market. 
+Our project involves comparing stock market returns from 11 popular US stocks to the return on the S&P 500, a common equity benchmark, over the last 10 years. We chose 11 stocks diversified across sectors (Financial Services, Healthcare, consumer discretionary, Telecoms, industrials, Technology, Bonds, consumer staples, energy and real estate). As a Finance + Data Science major, this project topic is particulary relevant for me. For Emma, her motivation is a keen interest in the workings of the stock market. 
 The research questions we have attempted to answer through this project are:
 <ul>
 <li>Which stocks and sectors have outperformed the S&P 500 in the last 10 years?</li>
@@ -14,10 +14,11 @@ The research questions we have attempted to answer through this project are:
 </ul>
 
 We are interested in these specific research questions because we want to see if a group of certain stocks can outperform a broader market index, and the relationship between the two.  These datasets will help address the question by allowing us to analyze the trends in a specific timeframe (~a decade), and this will help us to explore the relationship between certain stocks and the S&P500.  We can then use this information to answer other questions, and this can lead to a deeper understanding of the data and the trends that are found.  
+We found that most stocks have tracked the S&P500 benchmark very closely but tech stocks have shown a significant outperformance in the last 5 years. A recent uptrend in certain sectors points to sector rotation and could be indicative of investors' outlook on the economy.
 
 
 #### Data profile
-[500-1000 words] Description of each dataset used including all ethical/legal constraints.
+
 
 ***Dataset 1***
 
@@ -48,15 +49,30 @@ The second dataset we chose is the historical S&P 500 Index data from the Federa
 **License:** The FRED data is a permissive license, meaning that it's available for everyone to use, but they request to be cited for using their data
 
 
-Data quality: [500-1000 words] Summary of the quality assessment and findings.
+#### Data quality: 
+
+<u>Accuracy</u>: Yahoo finance and FRED are the gold standard of data providers for economic and financial data. They are reliable sources and are the go-to data sources across industries and objectives. 
+
+
+<u>Timeliness</u>: The FRED and Yahoo databases are updated daily espcially for high frequency data so all the data is up to date at the time of data acquisition. Older, newer and alternative frequency data can be obtained by modifying the 'start date' and 'frequency'/'interval' paramaters. However, low frequency data such as monthly, quarterly or annual (As opposed to daily) will only be available up to the most recently completed month. Overall, the data is timely 
+
+
+<u>Completeness</u>: Our datasets are broadly complete and have either no or very few missing values. Due to our data being time-oriented, missing values can be easily imputed through moving averages or by referencing alternative data sources
+
+<u>Consistency</u>: No systematic syntactic flaws seem to be present in our data
+
+#### Findings: 
+
+We plotted the time series in our data i.e. we plotted our stocks and the S&P500 index. Nvidia Inc. (NVDA) outperformed the other stocks and the benchmark S&P500 by a significant margin, with the divergence in returns increasing exponentially between 2023 and now. The other stocks which stand out and have done exceptionally well in the last 5 years are Broadcom Inc. (AVGO) and Tesla (TSLA).
+Stocks like Caterpillar (CAT) and Johnson & Johnson (JNJ) have been doing a little bit better in the recent past, indicating possible sector rotation amongst investors. 
 
 
 
-Findings: [~500 words] Description of any findings including numeric results and/or visualizations.
+Future work: [~500-1000 words] Brief discussion of any lessons learned and potential future work
 
+<u>Lessons learned</u>: Given the wide scope of this project, something we learned and would try to do differently is be more organized because this project has several moving parts. We would recommend first going through the requirements.txt file to ensure that you have all the software dependencies installed. Then we would recommend reading through the documentation, and looking at our data quality assessments. Lastly, you should review our scripts and use our Snakemake files to replicate our findings.
 
-
-Future work: [~500-1000 words] Brief discussion of any lessons learned and potential future work.
+<u>Future work</u>: While we have only used 11 stocks in our analysis, future work could extend our project in terms of scale and analyze a larger number of stocks.
 
 
 
@@ -72,6 +88,18 @@ import pandas as pd
 import matplotlib.pyplot as plt\
 import hashlib</ul>
 
+Documentation & Installation procedures:
+<ul>yfinance: https://python-yahoofinance.readthedocs.io/en/latest/api.html
+
+fredapi: https://pypi.org/project/fredapi/
+
+Matplotlib: https://matplotlib.org/stable/index.html
+
+Hashlib: https://docs.python.org/3/library/hashlib.html
+
+</ul>
+
+
 
 2. Loading dataset 1 using the `yfinance` library
 (i) Create a list of tickers for the stocks we want to import
@@ -86,15 +114,36 @@ import hashlib</ul>
 4. Data cleaning
 * The S&P500 series requires no cleaning
 * The data pulled from Yahoo finance has a multi-level schema. Level 1 of the schema contains price attributes (i.e. opening price, closing price, adjusted closing price, volume etc. on a given day) and level 2 of the schema contains the ticker symbol of the stock (NVDA, ABT, TSLA etc.). 
-- create a function using `pd.MultiIndex` in `pandas` to format the schema and retrieve only the adjusted closing price for each stock which is what will be used in analysis.
+- create a function using `pd.MultiIndex` in `pandas` to format the schema and retrieve only the adjusted closing price for each stock which is what will be used in analysis. Other variables like 'opening price', 'high', 'low' etc. will not be used since they do not really give a holistic picture on stock returns. Adjusted closing prices are more accurate, stable representations of stock returns and can be used for historical analysis.
 - Specify a datetime index for the dataframe to facilitate data integration
 - store the cleaned dataset in a dataframe
 
 5. Data Integration
-* Use pd.merge to merge the two dataframes on the datetime index
+* Use pd.merge to merge the two dataframes on the datetime index. 
+Documentation : https://pandas.pydata.org/pandas-docs/stable/user_guide/merging.html
 
 6. Data authenticity 
 Use the hashlib library to assign a unique SHA256 checksum value to our merged dataframe
 
+7. Workflow automation and provenance
+Create a snakefile and use snakemake to create an automated end-to-end workflow
 
-References: Formatted citations for any papers, datasets, or software used in your project.
+Documentation: https://snakemake.readthedocs.io/en/stable/
+
+
+#### References:
+
+**Yahoo Finance Data**
+
+Source : https://finance.yahoo.com/markets/
+
+yfinance library documentation: https://ranaroussi.github.io/yfinance/index.html
+
+
+**FRED Data**
+
+Pandas Requests Library Documentation: https://docs.python-requests.org/en/latest/index.html
+
+FRED API Documentation: https://github.com/mortada/fredapi  
+  
+    
