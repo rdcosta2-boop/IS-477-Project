@@ -21,8 +21,8 @@ config = {
     "frequency": 'm',
 
     # Output File Paths 
-    "raw_stock_data": "data/raw/Stocks_2015_2025.csv",
-    "raw_sp500_data": "data/raw/sp500_2015_2025.csv",
+    "raw_stock_data": "data/raw/Stocks_2016_2025.csv",
+    "raw_sp500_data": "data/raw/sp500_2016_2025.csv",
     "merged_data": "data/processed/merged_df.csv",
     "checksum_output": "data/checksums/merged_df.sha",
     "plot_output": "data/processed/performance_chart.png",

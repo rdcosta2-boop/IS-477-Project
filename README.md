@@ -48,6 +48,7 @@ The second dataset we chose is the historical S&P 500 Index data from the Federa
 
 **License:** The FRED data is a permissive license, meaning that it's available for everyone to use, but they request to be cited for using their data
 
+For our detailed analysis of data lifecyle and ethical data handling, navigate to file `M1_M2.md`
 
 #### Data quality: 
 
