@@ -22,5 +22,5 @@ else
     echo ""
     echo "OH NO YOU FAILED!"
     echo "Check your error message"
-    echo "if the regression test failed, read the **IMPORTANT** section within the additional steps that are listed in the workflowAutomationGuide.md to update your trusted checksum."
+    echo "if the regression test failed, read the **IMPORTANT** section within the additional steps that are listed in the "workflow_automation_guide.md" to update your trusted checksum."
 fi

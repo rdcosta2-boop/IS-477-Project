@@ -1,0 +1,87 @@
+Assuming unrestricted shared filesystem usage.
+host: RAAAAA-CHOMP.lan
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 8
+Rules claiming more threads will be scaled down.
+Job stats:
+job                     count
+--------------------  -------
+all                         1
+clean_and_merge_data        1
+generate_checksum           1
+generate_dag                1
+plot_data                   1
+run_regression_test         1
+total                       6
+
+Select jobs to execute...
+Execute 1 jobs...
+[Mon Dec  8 18:13:46 2025]
+localrule clean_and_merge_data:
+    input: data/raw/Stocks_2016_2025.csv, data/raw/sp500_2016_2025.csv
+    output: data/processed/merged_df.csv
+    jobid: 2
+    reason: Updated input files: data/raw/sp500_2016_2025.csv, data/raw/Stocks_2016_2025.csv
+    resources: tmpdir=/var/folders/vx/tdx7885s7g58xxw5fkccpgsr0000gn/T
+[Mon Dec  8 18:13:48 2025]
+Finished jobid: 2 (Rule: clean_and_merge_data)
+1 of 6 steps (17%) done
+Select jobs to execute...
+Execute 2 jobs...
+[Mon Dec  8 18:13:49 2025]
+localrule generate_checksum:
+    input: data/processed/merged_df.csv
+    output: data/checksums/merged_df.sha
+    jobid: 5
+    reason: Input files updated by another job: data/processed/merged_df.csv
+    resources: tmpdir=/var/folders/vx/tdx7885s7g58xxw5fkccpgsr0000gn/T
+[Mon Dec  8 18:13:49 2025]
+localrule plot_data:
+    input: data/processed/merged_df.csv
+    output: data/processed/performance_chart.png
+    jobid: 1
+    reason: Input files updated by another job: data/processed/merged_df.csv
+    resources: tmpdir=/var/folders/vx/tdx7885s7g58xxw5fkccpgsr0000gn/T
+[Mon Dec  8 18:13:51 2025]
+Finished jobid: 5 (Rule: generate_checksum)
+2 of 6 steps (33%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Mon Dec  8 18:13:51 2025]
+localrule run_regression_test:
+    input: data/checksums/merged_df.sha
+    output: data/checksums/regression_test_result.txt
+    jobid: 7
+    reason: Input files updated by another job: data/checksums/merged_df.sha
+    resources: tmpdir=/var/folders/vx/tdx7885s7g58xxw5fkccpgsr0000gn/T
+[Mon Dec  8 18:13:51 2025]
+Finished jobid: 1 (Rule: plot_data)
+3 of 6 steps (50%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Mon Dec  8 18:13:51 2025]
+localrule generate_dag:
+    input: data/processed/performance_chart.png, data/checksums/merged_df.sha
+    output: data/processed/dag.png
+    jobid: 6
+    reason: Input files updated by another job: data/checksums/merged_df.sha, data/processed/performance_chart.png
+    resources: tmpdir=/var/folders/vx/tdx7885s7g58xxw5fkccpgsr0000gn/T
+[Mon Dec  8 18:13:52 2025]
+Finished jobid: 6 (Rule: generate_dag)
+4 of 6 steps (67%) done
+[Mon Dec  8 18:13:53 2025]
+Finished jobid: 7 (Rule: run_regression_test)
+5 of 6 steps (83%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Mon Dec  8 18:13:53 2025]
+localrule all:
+    input: data/processed/performance_chart.png, data/checksums/merged_df.sha, data/processed/dag.png, data/checksums/regression_test_result.txt
+    jobid: 0
+    reason: Input files updated by another job: data/checksums/merged_df.sha, data/checksums/regression_test_result.txt, data/processed/performance_chart.png, data/processed/dag.png
+    resources: tmpdir=/var/folders/vx/tdx7885s7g58xxw5fkccpgsr0000gn/T
+[Mon Dec  8 18:13:53 2025]
+Finished jobid: 0 (Rule: all)
+6 of 6 steps (100%) done
+Complete log(s): /Users/emma/Desktop/IS-477-Project/.snakemake/log/2025-12-08T181345.897846.snakemake.log
