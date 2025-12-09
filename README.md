@@ -169,7 +169,7 @@ Our observations start from January 2016 till November 2025. The index data is n
 #### Validation using schema.org
 We validated our FRED SP500 series using the schema.org metadata validation function and it meets all conformance standards.
 
-However, when we passed the Yahoo finance datasets through the schema.org validator, it did not detect any metadata because there isn't any. There is only a minor note made on the Yahoo Finance website that the 'Adjusted close price is price adjusted for splits and dividend and/or capital gain distrubutions. While the lack of a structured codebook is not ideal, this could be because there is essentially only one variable price and all its attributes such as open, close etc. are intuitive. 
+However, when we passed the Yahoo finance datasets through the schema.org validator, it did not detect any metadata because there isn't any. There is only a minor note made on the Yahoo Finance website that the 'Adjusted close price is price adjusted for splits and dividend and/or capital gain distrubutions'. While the lack of a structured codebook is not ideal, this could be because there is essentially only one variable price and all its attributes such as open, close etc. are intuitive. 
 
   
     
