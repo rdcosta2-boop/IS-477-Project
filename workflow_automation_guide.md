@@ -7,12 +7,14 @@ Next, you need to run this command in your terminal:
 
 `bash run_all.sh`
   
+  
 ## **IMPORTANT**   
-If it's the first time running the workflow, the checksum will be inaccurate, so once you run it, copy the string that is found by navigating to **data/checkums/merged_df.sha** and paste it as value for `trusted_checksum` in the `config` parameter in the snakefile.
+If it's the first time running the workflow, the checksum might possibly be inaccurate (check by going to **data/checksums/regression_test_result.txt**), so once you run it, copy the string that is found by navigating to **data/checkums/merged_df.sha** and paste it as value for `trusted_checksum` in the `config` parameter in the snakefile.
 
 Then, run the workflow again by typing `snakemake --cores all`.  
 
 Check the regression result by going to **data/checksums/regression_test_result.txt**, where it should say "`The calculated checksum (...) matches Trusted checksum (...)`", which confirms that the data has not been altered.  
+  
 
 # <u> Additional Information </u>    
 
