@@ -11,7 +11,8 @@ from workflow import (
 )
 
 config = {
-    "fred_api_key": '3dd37ba3122e1228a5bacd7f8c6f3775',
+    # api key to use: 3dd37ba3122e1228a5bacd7f8c6f3775
+    "fred_api_key": ' ',
 
     # parameters
     "tickers": ['NVDA','JPM','WMT','TSLA','AMZN','AVGO','CAT','XOM','JNJ','ABT','PLD'],
